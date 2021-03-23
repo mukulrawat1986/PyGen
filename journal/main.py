@@ -12,12 +12,14 @@ def print_header():
 def run_event_loop():
     print('What do you want to do with your journal?')
 
+    journal_data = []
+
     while 1:
         cmd = input('[L]ist entries, [A]dd an entry, E[x]it: ').lower().strip()
         if cmd == 'l':
-            list_entries()
+            list_entries(journal_data)
         elif cmd == 'a':
-            add_entry()
+            add_entry(journal_data)
         elif cmd == 'x':
             break
         else:
@@ -26,12 +28,16 @@ def run_event_loop():
     print('Done, goodbye.')
 
 
-def list_entries():
-    print("Listing......")
+def list_entries(data):
+    print('Your journal entries')
+    entries = data[::-1]
+    for idx, entry in enumerate(entries):
+        print('* [{}] {}'.format(idx+1, entry))
 
 
-def add_entry():
-    print("Adding.......")
+def add_entry(data):
+    text = input("Type your entry, <enter> to exit: ")
+    data.append(text)
 
 
 main()
