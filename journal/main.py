@@ -18,13 +18,13 @@ def run_event_loop():
     journal_name = 'default'
     journal_data = journal.load(journal_name)
 
-    while 1:
+    while True:
         cmd = input('[L]ist entries, [A]dd an entry, E[x]it: ').lower().strip()
         if cmd == 'l':
             list_entries(journal_data)
         elif cmd == 'a':
             add_entry(journal_data)
-        elif cmd == 'x':
+        elif cmd == 'x' or not cmd:
             break
         else:
             print("Sorry, we don't understand '{}'".format(cmd))
