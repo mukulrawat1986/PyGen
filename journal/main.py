@@ -1,5 +1,6 @@
 import journal
 
+
 def main():
     print_header()
     run_event_loop()
@@ -34,7 +35,7 @@ def run_event_loop():
 
 def list_entries(data):
     print('Your journal entries')
-    entries = data[::-1]
+    entries = reversed(data)
     for idx, entry in enumerate(entries):
         print('* [{}] {}'.format(idx+1, entry))
 
