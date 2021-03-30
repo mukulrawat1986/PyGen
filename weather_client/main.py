@@ -12,7 +12,7 @@ def main():
 	state, city = get_state_and_city(code)
 
 	# get html from web
-	get_html_from_web(state, city, code)
+	html = get_html_from_web(state, city, code)
 
 	# parse the html
 	# display the forecast
@@ -34,7 +34,8 @@ def get_state_and_city(zipcode):
 
 def get_html_from_web(state, city, zipcode):
 	url = 'http://www.wunderground.com//weather/us/{}/{}/{}'.format(state, city, zipcode)
-	print(url)
+	response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
+	return response.text
 
 
 if __name__ == '__main__':
