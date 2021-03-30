@@ -1,5 +1,4 @@
-import urllib.request
-import json
+import requests
 
 
 def main():
@@ -29,10 +28,8 @@ def print_the_header():
 def get_state_and_city(zipcode):
 	url = 'http://ziptasticapi.com/{}'.format(zipcode)
 	# set a known browser user agent
-	req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-	with urllib.request.urlopen(req) as f:
-		data = json.loads(f.read().decode())
-	return data['state'], data['city']
+	response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
+	return response.json()['state'], response.json()['city']
 
 
 def get_html_from_web(state, city, zipcode):
