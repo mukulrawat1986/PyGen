@@ -1,5 +1,5 @@
 import requests
-
+import bs4
 
 def main():
 	# print the header
@@ -15,6 +15,8 @@ def main():
 	html = get_html_from_web(state, city, code)
 
 	# parse the html
+	get_weather_from_html(html)
+
 	# display the forecast
 
 
@@ -38,5 +40,8 @@ def get_html_from_web(state, city, zipcode):
 	return response.text
 
 
+def get_weather_from_html(html):
+	# once the api of the site works, we will just use it
 if __name__ == '__main__':
 	main()
+
