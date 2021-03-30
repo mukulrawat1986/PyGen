@@ -42,6 +42,9 @@ def get_html_from_web(state, city, zipcode):
 
 def get_weather_from_html(html):
 	# once the api of the site works, we will just use it
+	pass
+
+
 if __name__ == '__main__':
 	main()
 
