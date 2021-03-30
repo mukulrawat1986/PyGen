@@ -30,8 +30,8 @@ def get_state_and_city(zipcode):
 	url = 'http://ziptasticapi.com/{}'.format(zipcode)
 	# set a known browser user agent
 	req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-	f = urllib.request.urlopen(req)
-	data = json.loads(f.read().decode())
+	with urllib.request.urlopen(req) as f:
+		data = json.loads(f.read().decode())
 	return data['state'], data['city']
 
 
